@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # Nginx Gateway
+  brick-gateway:
+    build: .
+    ports:
+      - "17000:17000"
+      - "443:443"
+    container_name: el-brick-gateway
+    restart: unless-stopped
+    depends_on:
+      - brick-hub
+      - brick-clock
+      - brick-sentinel
+    networks:
+      - brick-network
+
+  # Brick Hub Frontend
+  brick-hub:
+    build: ../brick-hub
+    container_name: el-brick-hub
+    restart: unless-stopped
+    networks:
+      - brick-network
+    environment:
+      - NODE_ENV=production
+
+  # Brick Clock Service
+  brick-clock:
+    build: ../brick-clock
+    container_name: el-brick-clock
+    restart: unless-stopped
+    networks:
+      - brick-network
+    ports:
+      - "17003:17003"
+
+  # Brick Sentinel Service
+  brick-sentinel:
+    build: ../brick-sentinel
+    container_name: el-brick-sentinel
+    restart: unless-stopped
+    networks:
+      - brick-network
+    ports:
+      - "17001:17001"
+
+networks:
+  brick-network:
+    driver: bridge 
