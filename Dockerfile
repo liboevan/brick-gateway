@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM ghcr.io/max-lt/nginx-jwt-module:latest
 
 # Build arguments
 ARG VERSION=0.1.0-dev
@@ -10,6 +10,8 @@ ENV BUILD_DATETIME=$BUILD_DATETIME
 
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY jwt_secret.key /etc/nginx/jwt_secret.key
+COPY public.pem /etc/nginx/public.pem
 
 # Create necessary directories
 RUN mkdir -p /var/log/nginx /var/www/html
