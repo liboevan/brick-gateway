@@ -10,7 +10,6 @@ ENV BUILD_DATETIME=$BUILD_DATETIME
 
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY jwt_secret.key /etc/nginx/jwt_secret.key
 COPY public.pem /etc/nginx/public.pem
 
 # Create necessary directories
