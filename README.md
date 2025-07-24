@@ -142,15 +142,15 @@ curl http://localhost:17000/health
 ### 上游服务配置
 ```nginx
 upstream brick_clock {
-    server el-brick-clock:17003;
+    server brick-clock:17003;
 }
 
 upstream brick_hub {
-    server el-brick-hub:17002;
+    server brick-hub:17002;
 }
 
 upstream brick_auth {
-    server el-brick-auth:17001;
+    server brick-auth:17001;
 }
 ```
 
@@ -236,7 +236,7 @@ gzip_types text/plain text/css text/xml text/javascript application/json applica
 docker ps | grep brick-gateway
 
 # 查看网关日志
-docker logs el-brick-gateway
+docker logs brick-gateway
 
 # 测试健康检查
 curl http://localhost:17000/health
@@ -292,4 +292,4 @@ curl -H "Authorization: Bearer <token>" \
 - **当前版本**：0.1.0-dev
 - **构建时间**：2025-07-10T13:00:00Z
 - **服务名称**：brick-gateway
-- **描述**：API Gateway Service 
+- **描述**：API Gateway Service

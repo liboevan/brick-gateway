@@ -142,15 +142,15 @@ curl http://localhost:17000/health
 ### Upstream Service Configuration
 ```nginx
 upstream brick_clock {
-    server el-brick-clock:17003;
+    server brick-clock:17003;
 }
 
 upstream brick_hub {
-    server el-brick-hub:17002;
+    server brick-hub:17002;
 }
 
 upstream brick_auth {
-    server el-brick-auth:17001;
+    server brick-auth:17001;
 }
 ```
 
@@ -236,7 +236,7 @@ gzip_types text/plain text/css text/xml text/javascript application/json applica
 docker ps | grep brick-gateway
 
 # View gateway logs
-docker logs el-brick-gateway
+docker logs brick-gateway
 
 # Test health check
 curl http://localhost:17000/health
@@ -292,4 +292,4 @@ Quick start and test
 - **Current Version**: 0.1.0-dev
 - **Build Time**: 2025-07-10T13:00:00Z
 - **Service Name**: brick-gateway
-- **Description**: API Gateway Service 
+- **Description**: API Gateway Service

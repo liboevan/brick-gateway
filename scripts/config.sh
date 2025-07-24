@@ -5,8 +5,8 @@
 
 # Project Configuration
 PROJECT_NAME="brick-gateway"
-IMAGE_NAME="el/brick-gateway"
-CONTAINER_NAME="el-brick-gateway"
+IMAGE_NAME="brick-gateway"
+CONTAINER_NAME="brick-gateway"
 API_PORT="17000"
 DEFAULT_VERSION="0.1.0-dev"
 
@@ -52,7 +52,7 @@ run_container() {
     fi
     print_info "Running $CONTAINER_NAME (version: $VERSION)..."
     docker run -d --name $CONTAINER_NAME \
-      --network brick-deployment_el-brick-network \
+      --network brick-deployment_brick-network \
       -e NODE_ENV=production \
       -p $API_PORT:$API_PORT \
       $IMAGE_NAME:$VERSION
@@ -74,4 +74,4 @@ wait_for_api() {
         fi
         sleep 1
     done
-} 
+}
