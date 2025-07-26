@@ -15,8 +15,9 @@ print_info "Building with version: $VERSION"
 
 # Build with version and build datetime - Dockerfile is in parent folder
 cd "$SCRIPT_DIR"
-docker build -f ../Dockerfile --build-arg VERSION=$VERSION --build-arg BUILD_DATETIME=$BUILD_DATETIME -t $IMAGE_NAME:$VERSION -t $IMAGE_NAME:latest ..
+IMAGE_NAME="brick-gateway"
+docker build --no-cache -f ../Dockerfile --build-arg VERSION=$VERSION --build-arg BUILD_DATETIME=$BUILD_DATETIME -t $IMAGE_NAME:$VERSION -t $IMAGE_NAME:latest ..
 
 print_info "Build completed!"
 print_info "Image: $IMAGE_NAME:$VERSION"
-print_info "Image: $IMAGE_NAME:latest" 
+print_info "Image: $IMAGE_NAME:latest"
